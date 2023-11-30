@@ -23,7 +23,7 @@ process CONVERTTOUPPER {
     stdout
 
     """
-    cat $y | tr '[a-z]' '[A-Z]' 
+    rev $y
     """
 }
 
