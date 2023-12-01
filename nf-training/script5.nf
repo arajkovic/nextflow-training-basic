@@ -20,6 +20,8 @@ log.info """\
  * given the transcriptome file
  */
 process INDEX {
+    container 'quay.io/biocontainers/salmon:1.7.0--h84f40af_0'
+
     input:
     path transcriptome
 
@@ -33,7 +35,9 @@ process INDEX {
 }
 
 process QUANTIFICATION {
+    container 'quay.io/biocontainers/salmon:1.7.0--h84f40af_0'
     tag "Salmon on $sample_id"
+
     publishDir params.outdir, mode:'copy'
 
     input:
@@ -50,6 +54,7 @@ process QUANTIFICATION {
 }
 
 process FASTQC {
+    container 'biocontainers/fastqc:v0.11.5'
     tag "FASTQC on $sample_id"
 
     input:
